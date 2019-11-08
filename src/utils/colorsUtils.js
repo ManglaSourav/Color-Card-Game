@@ -61,5 +61,5 @@ export const getColors = howMany => {
     }
     colorArray[i] = colorArray[20 - n];
   }
-  return colors;
+  return colors.sort(() => Math.random() - 0.5);
 };
