@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-export default function Header() {
+export default function Header({ setDifficulty }) {
   return (
     <Wrapper>
       <TimerCont>Timer</TimerCont>
       <Span>MATCH THE CARDS</Span>
       <ButtonsContainer>
-        <Button>Easy</Button>
-        <Button>Medium</Button>
-        <Button>Hard</Button>
+        <Button onClick={() => setDifficulty(12)}>Easy</Button>
+        <Button onClick={() => setDifficulty(18)}>Medium</Button>
+        <Button onClick={() => setDifficulty(24)}>Hard</Button>
       </ButtonsContainer>
     </Wrapper>
   );

@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { device } from "utils/device";
 import { getColors } from "utils/colorsUtils";
 
-export default function CardGrid() {
-  const difficulty = 12;
-  const colors = useRef(getColors(difficulty) || []);
+export default function CardGrid({ colors, difficulty }) {
+  // console.log(difficulty);
+  // const colors = useRef(getColors(difficulty) || []);
   const [clickedCards, setClickedCard] = useState([]);
   const [foldCards, setFoldCards] = useState([]);
 
@@ -23,11 +23,11 @@ export default function CardGrid() {
 
   return (
     <GridWrapper rows={`repeat(${difficulty > 6 ? 6 : difficulty},1fr)`}>
-      {colors.current.length > 0 &&
-        colors.current.map((color, i) => (
+      {colors.length > 0 &&
+        colors.map((color, i) => (
           <ColorCard
             visibility={setVisibility(color)}
-            shouldUpdate={clickedCards.length < colors.current.length}
+            shouldUpdate={clickedCards.length < colors.length}
             setClickedCard={setClickedCard}
             clickedCards={clickedCards}
             foldCards={foldCards}
