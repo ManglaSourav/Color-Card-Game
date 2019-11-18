@@ -1,15 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-export default function Header({ setDifficulty }) {
+import Level from "components/Level";
+export default function Header(props) {
+  const {
+    setDifficulty,
+    setStartTime,
+    startTime,
+    counter,
+    setChangeComplexity
+  } = props;
+
   return (
     <Wrapper>
-      <TimerCont>Timer</TimerCont>
-      <Span>MATCH THE CARDS</Span>
-      <ButtonsContainer>
-        <Button onClick={() => setDifficulty(12)}>Easy</Button>
-        <Button onClick={() => setDifficulty(18)}>Medium</Button>
-        <Button onClick={() => setDifficulty(24)}>Hard</Button>
-      </ButtonsContainer>
+      <TimerCont>{startTime ? counter : 0}</TimerCont>
+      <Span>MATCH YOUR CARDS</Span>
+      <Level
+        setDifficulty={setDifficulty}
+        setStartTime={setStartTime}
+        setChangeComplexity={setChangeComplexity}
+      ></Level>
     </Wrapper>
   );
 }
@@ -22,15 +31,6 @@ const Wrapper = styled.div`
   display: flex;
   background-color: pink;
   justify-content: space-between;
-`;
-const Button = styled.button`
-  background: ${props => (props.primary ? "palevioletred" : "white")};
-  color: ${props => (props.primary ? "white" : "palevioletred")};
-  font-size: 20px;
-  margin: 15px;
-  padding: 0 30px;
-  border-radius: 100px;
-  border: 2px solid palevioletred;
 `;
 
 const Span = styled.span`
@@ -45,7 +45,4 @@ const TimerCont = styled.div`
   font-size: 30px;
   font-weight: 500;
   padding-left: 10px;
-`;
-const ButtonsContainer = styled.div`
-  display: flex;
 `;

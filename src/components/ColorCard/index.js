@@ -11,9 +11,10 @@ export default function ColorCard(props) {
     shouldUpdate,
     index,
     clickedCards,
-    foldCards,
-    setFoldCards,
-    flipCard
+    changeComplexity
+    // foldCards,
+    // setFoldCards,
+    // flipCard
   } = props;
   const [clicked, setClicked] = useState(false);
 
@@ -43,16 +44,20 @@ export default function ColorCard(props) {
       // }
     }
   };
+  useEffect(() => {
+    setClicked(false);
+  }, [changeComplexity]);
 
   return (
     <>
       <Card
         visibility={visibility ? "visible" : "hidden"}
         color={color}
-        flip={flipCard}
+        // flip={flipCard}
         clicked={clicked ? true : ""}
         // clicked={clickedCards.filter(item => item.index === index).length > 0}
-        onClick={onCardClicked}></Card>
+        onClick={onCardClicked}
+      ></Card>
     </>
   );
 }
@@ -77,12 +82,15 @@ const Card = styled.div`
     transform: rotateY(180deg);
   `}
 
-  &:active {
+   &:active{
     transform: ${props => `rotateY(180deg)`};
   }
-
+ 
   @media ${device.mobileL} {
     height: 100px;
     width: 100px;
   }
+  /* @media ${device.laptopL} {
+
+  } */
 `;

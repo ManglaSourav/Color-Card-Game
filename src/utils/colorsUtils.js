@@ -281,15 +281,22 @@ export const colorArray = [
   "#77ecca"
 ];
 
-export const getColors = howMany => {
+export const getColorsOld = howMany => {
   const colors = [];
   let n;
   for (n = 1; n <= howMany; ++n) {
-    let i = Math.floor(Math.random() * (20 - n) + 1);
+    let i = Math.floor(Math.random() * (50 - n) + 1);
     for (let index = 0; index < 2; index++) {
       colors.push(colorArray[i]);
     }
-    colorArray[i] = colorArray[20 - n];
+    colorArray[i] = colorArray[50 - n];
   }
+  return colors.sort(() => Math.random() - 0.5);
+};
+
+export const getColors = howMany => {
+  let colors = colorArray.slice(0, howMany);
+  colors = [...colors, ...colors];
+
   return colors.sort(() => Math.random() - 0.5);
 };
