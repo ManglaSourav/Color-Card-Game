@@ -25,7 +25,7 @@ export default function Level({
             commonTask();
           }}
         >
-          Easy
+          Easy pesy
         </Button>
         <Button
           onClick={() => {
