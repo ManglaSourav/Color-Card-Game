@@ -7,10 +7,12 @@ pipeline {
         
         stage("cloning"){
             steps{
-                echo "This is cloning the code"
-                // git url:"https://github.com/ManglaSourav/Color-Card-Game.git", branch:"master"
-                clone('https://github.com/ManglaSourav/Color-Card-Game.git', 'master')
-                echo "Cloning is done"
+                script {
+                    echo "This is cloning the code"
+                    // git url:"https://github.com/ManglaSourav/Color-Card-Game.git", branch:"master"
+                    clone('https://github.com/ManglaSourav/Color-Card-Game.git', 'master')
+                    echo "Cloning is done"
+                }
             }
         } 
 
