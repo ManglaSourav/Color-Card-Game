@@ -39,8 +39,10 @@ pipeline {
                 echo "this is deploying the code"
                 // we do not use docker run command in production becuase if we run this command it will throw error that port is already in use. so we use docker-compose
                 // sh "docker run -d -p 8000:8000 react-app:latest"
+                echo "Deploying...."
                 sh "docker compose up -d"
                 echo "deployment is done"
+                
             }
         }
     }
